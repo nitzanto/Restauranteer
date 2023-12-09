@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -20,15 +20,24 @@ export class RestaurantService {
     return this.restaurantRepository.find();
   }
 
-  async findOne(id: number) {
-    return `This action returns a #${id} restaurant`;
+  async findOne(id: string) {
+    const restaurant = await this.restaurantRepository.findOne({
+      where: { id },
+    });
+
+    if (!restaurant) {
+      throw new NotFoundException(`Couldnt find restaurant with ID: ${id}`);
+    }
+
+    return restaurant;
   }
 
   async update(id: number, updateRestaurantDto: UpdateRestaurantDto) {
     return `This action updates a #${id} restaurant`;
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} restaurant`;
+  async remove(id: string): Promise<Restaurant> {
+    const restaurant: Restaurant = await this.findOne(id);
+    return await this.restaurantRepository.remove(restaurant);
   }
 }

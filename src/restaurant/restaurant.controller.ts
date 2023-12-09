@@ -27,7 +27,7 @@ export class RestaurantController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return this.restaurantService.findOne(+id);
+    return this.restaurantService.findOne(id);
   }
 
   @Put(':id')
@@ -40,6 +40,6 @@ export class RestaurantController {
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    return this.restaurantService.remove(+id);
+    return this.restaurantService.remove(id);
   }
 }
