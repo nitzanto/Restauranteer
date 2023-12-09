@@ -1,10 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn, PrimaryColumn } from 'typeorm';
-import { v4 as uuidv4 } from 'uuid';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('Restaurant')
 export class Restaurant {
-  @PrimaryColumn('uuid')
-  id: string = uuidv4();
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   name: string;
@@ -15,7 +14,7 @@ export class Restaurant {
   @Column()
   imgURL: string;
 
-  @Column({ type: 'double precision' }) //  for storing floating-point numbers like ratings
+  @Column({ type: 'double precision' }) // for storing floating-point numbers like ratings
   rating: number;
 
   @Column()
@@ -26,8 +25,4 @@ export class Restaurant {
 
   @Column('timestamptz', { array: true }) // multiple reservation dates
   reservationDates: Date[];
-
-  constructor(partial: Partial<Restaurant>) {
-    Object.assign(this, partial);
-  }
 }
