@@ -1,29 +1,20 @@
-import { ValidationPipe } from '@nestjs/common';
+import { configure as serverlessExpress } from '@vendia/serverless-express';
 import { NestFactory } from '@nestjs/core';
-import serverlessExpress from '@vendia/serverless-express';
-import { Callback, Context, Handler } from 'aws-lambda';
-
 import { AppModule } from './app.module';
 
-let serverCache: Handler;
+let cachedServer;
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe());
-  app.enableCors({
-    origin: 'http://localhost:5173',
-  });
-  await app.init();
+export const handler = async (event, context) => {
+  if (!cachedServer) {
+    const nestApp = await NestFactory.create(AppModule);
+    nestApp.enableCors({
+      origin: 'http://localhost:5173',
+    });
+    await nestApp.init();
+    cachedServer = serverlessExpress({
+      app: nestApp.getHttpAdapter().getInstance(),
+    });
+  }
 
-  const expressApp = app.getHttpAdapter().getInstance();
-  return serverlessExpress({ app: expressApp });
-}
-
-export const handler: Handler = async (
-  event: any,
-  context: Context,
-  callback: Callback,
-) => {
-  serverCache = serverCache ?? (await bootstrap());
-  return serverCache(event, context, callback);
+  return cachedServer(event, context);
 };
