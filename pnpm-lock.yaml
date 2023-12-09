@@ -15,7 +15,7 @@ dependencies:
     specifier: ^10.0.0
     version: 10.2.10(@nestjs/common@10.2.10)(@nestjs/platform-express@10.2.10)(reflect-metadata@0.1.14)(rxjs@7.8.1)
   '@nestjs/mapped-types':
-    specifier: '*'
+    specifier: ^2.0.4
     version: 2.0.4(@nestjs/common@10.2.10)(reflect-metadata@0.1.14)
   '@nestjs/platform-express':
     specifier: ^10.0.0
@@ -38,6 +38,9 @@ dependencies:
   typeorm:
     specifier: ^0.3.17
     version: 0.3.17(pg@8.11.3)(ts-node@10.9.2)
+  uuid:
+    specifier: ^9.0.1
+    version: 9.0.1
 
 devDependencies:
   '@nestjs/cli':
