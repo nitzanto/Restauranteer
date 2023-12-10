@@ -18,14 +18,18 @@ export class RestaurantController {
 
   @Post()
   async create(@Body() credentials: any) {
-    const response = await axios.post(
-      'http://34.160.44.153/auth/login',
-      credentials,
-      {
-        withCredentials: true,
-      },
-    );
-    return response;
+    try {
+      const response = await axios.post(
+        'http://34.160.44.153/auth/login',
+        credentials,
+        {
+          withCredentials: true,
+        },
+      );
+      return response;
+    } catch (err) {
+      return err.message;
+    }
   }
 
   @Get()
