@@ -26,6 +26,7 @@
     <li><strong>AWS Lambda:</strong> Serverless computing for scalable and cost-effective execution of functions.</li>
     <li><strong>Serverless Framework:</strong> Simplifies the deployment and management of serverless applications.</li>
     <li><strong>PostgreSQL:</strong> A powerful, serverless database for storing and retrieving restaurant data.</li>
+<li><strong>GitHub Actions:</strong> Streamlining development workflow with automated CI/CD process for seamless deployment of AWS Lambda function.</li>
 </ul>
 
 
