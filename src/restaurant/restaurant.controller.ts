@@ -10,27 +10,14 @@ import {
 import { RestaurantService } from './restaurant.service';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
-import axios from 'axios';
-import { UserDto } from './dto/user-dto';
 
 @Controller('restaurants')
 export class RestaurantController {
   constructor(private readonly restaurantService: RestaurantService) {}
 
   @Post()
-  async create(@Body() credentials: any) {
-    try {
-      const response = await axios.post(
-        'http://34.160.44.153/auth/login',
-        credentials,
-        {
-          withCredentials: true,
-        },
-      );
-      return response;
-    } catch (err) {
-      return err.message;
-    }
+  async create(@Body() createRestaurantDto: CreateRestaurantDto) {
+    return this.restaurantService.create(createRestaurantDto);
   }
 
   @Get()
