@@ -1,73 +1,97 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+<!DOCTYPE html>
+<html>
+<body>
+<div align="center">
+    <h1>Restauranteer Serverless Lambda App</h1>
+    <img src="https://i.imgur.com/kqvjJ3c.png" alt="Logo" width="600" height="600">
+</div>
+
+<h2>Overview</h2>
+
+<p>Restauranteer is a serverless API designed to streamline the management of restaurants. Leveraging AWS Lambda functions for serverless computing and a PostgreSQL serverless database, Restauranteer provides a scalable and efficient solution for handling various aspects of restaurant management.
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<h2>Features:</h2>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<ul>
+    <li><strong>Restaurant CRUD Operations:</strong> Easily manage restaurant data, including creating, updating, and deleting restaurant information.</li>
+    <li><strong>Resturanat Management:</strong> Define and modify your restaurant with ease, allowing for seamless updates to offerings.</li>
+    <li><strong>Serverless Architecture:</strong> Utilizing AWS Lambda functions, Restauranteer ensures cost-effective, scalable, and low-maintenance operation.</li>
+    <li><strong>PostgreSQL Serverless Database:</strong> The API is connected to a serverless PostgreSQL database, providing a robust and flexible storage solution.</li>
+</ul>
 
-## Description
+<h2>Technologies Used:</h2>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<ul>
+    <li><strong>AWS Lambda:</strong> Serverless computing for scalable and cost-effective execution of functions.</li>
+    <li><strong>Serverless Framework:</strong> Simplifies the deployment and management of serverless applications.</li>
+    <li><strong>PostgreSQL:</strong> A powerful, serverless database for storing and retrieving restaurant data.</li>
+<li><strong>GitHub Actions:</strong> Streamlining development workflow with automated CI/CD process for seamless deployment of AWS Lambda function.</li>
+</ul>
 
-## Installation
 
-```bash
-$ pnpm install
-```
+<h2>Resources</h2>
+<h3>Restaurants Resource</h3>
 
-## Running the app
+<ul>
+    <li><strong>GET /restaurants</strong>: Retrieve a list of all existing restaurants and their information</li>
+    <li><strong>GET /restaurants/:id</strong>: Retrieve specific restaurant's information</li>
+    <li><strong>POST /restaurants</strong>: Create a new restaurant</li>
+    <li><strong>PUT /restaurants/:id</strong>: Update a restaurant's information.</li>
+    <li><strong>DELETE /restaurants/:id</strong>: Delete a restaurant from DB</li>
+</ul>
 
-```bash
-# development
-$ pnpm run start
+<h2>API Paths</h2>
 
-# watch mode
-$ pnpm run start:dev
+<p>Here are the main API endpoints with examples of how to use them:</p>
 
-# production mode
-$ pnpm run start:prod
-```
+<h3>Restaurants Resource</h3>
+<ul>
+<li><p>Retrieve all restaurants:</p></li>
+<pre><code>GET /restaurants</code></pre>
 
-## Test
+<li><p>Retrieve a specific restaurant</p></li>
+<pre><code>GET /restaurants/:id</code></pre>
 
-```bash
-# unit tests
-$ pnpm run test
+<li><p><u></u>Create a new restaurant:</p></li>
+<pre><code>POST /restaurants</code></pre>
+<pre><code>Example request body:
+{
+  "name": "Quagmire's Brew Haven ☕",
+  "imgURL": "https://i.imgur.com/FB2KAHs.jpg",
+  "rating": 4.0,
+  "description": "Quagmire's Brew Haven, the coffee shop in Family Guy, where every cup is as bold as Peter, as smooth as Lois, and as full of surprises as Stewie's schemes.",
+  "location": "789 Quagmire Avenue",
+  "cuisine": "Coffee Shop",
+  "reservationDates": [
+    "2023-12-02T19:45:00",
+    "2023-12-04T16:00:00",
+    "2023-12-05T21:00:00"
+  ]
+}
+</code></pre>
 
-# e2e tests
-$ pnpm run test:e2e
+<li><p>Update a restaurant's information:</p></li>
+<pre><code>PUT /restaurants/:id</code></pre>
+<pre><code>
+Example request body:
+{
+  "name": "Quagmire's Brew Haven ☕",
+  "imgURL": "https://i.imgur.com/FB2KAHs.jpg",
+  "rating": 4.0,
+  "description": "Quagmire's Brew Haven, the coffee shop in Family Guy, where every cup is as bold as Peter, as smooth as Lois, and as full of surprises as Stewie's schemes.",
+  "location": "789 Quagmire Avenue",
+  "cuisine": "Coffee Shop",
+  "reservationDates": [
+    "2023-12-02T19:45:00",
+    "2023-12-04T16:00:00",
+    "2023-12-05T21:00:00"
+  ]
+}
+</code></pre>
 
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+<li><p>Delete a restaurant:</p></li>
+<pre><code>DELETE /restaurants/:id</code></pre>
+<br></br>
+</body>
+</html>
