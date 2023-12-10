@@ -18,7 +18,7 @@ export class RestaurantController {
   constructor(private readonly restaurantService: RestaurantService) {}
 
   @Post()
-  async create(@Body() credentials: UserDto) {
+  async create(@Body() credentials: any) {
     try {
       const response = await axios.post(
         'http://34.160.44.153/auth/login',
