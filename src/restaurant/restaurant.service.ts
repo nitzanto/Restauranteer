@@ -20,7 +20,7 @@ export class RestaurantService {
     return this.restaurantRepository.find();
   }
 
-  async findOne(id: string) {
+  async findOne(id: string): Promise<Restaurant> {
     const restaurant = await this.restaurantRepository.findOne({
       where: { id },
     });
@@ -32,8 +32,12 @@ export class RestaurantService {
     return restaurant;
   }
 
-  async update(id: number, updateRestaurantDto: UpdateRestaurantDto) {
-    return `This action updates a #${id} restaurant`;
+  async update(
+    id: string,
+    updateRestaurantDto: UpdateRestaurantDto,
+  ): Promise<Restaurant> {
+    await this.restaurantRepository.update(id, updateRestaurantDto);
+    return await this.findOne(id);
   }
 
   async remove(id: string): Promise<Restaurant> {

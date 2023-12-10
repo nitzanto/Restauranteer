@@ -35,7 +35,7 @@ export class RestaurantController {
     @Param('id') id: string,
     @Body() updateRestaurantDto: UpdateRestaurantDto,
   ) {
-    return this.restaurantService.update(+id, updateRestaurantDto);
+    return this.restaurantService.update(id, updateRestaurantDto);
   }
 
   @Delete(':id')
