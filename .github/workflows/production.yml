@@ -49,3 +49,8 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        PG_HOST: ${{ secrets.PG_HOST }}
+        PG_USER: ${{ secrets.PG_USER }}
+        PG_PASS: ${{ secrets.PG_PASS }}
+        PG_DATABASE: ${{ secrets.PG_DATABASE }}
+
