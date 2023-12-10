@@ -2,19 +2,9 @@ service: restauranteer
 
 frameworkVersion: '3'
 
-useDotenv: true
-
 provider:
   name: aws
   runtime: nodejs18.x
-  environment:
-    PG_HOST: ${env:PG_HOST}
-
-    PG_USER: ${env:PG_USER}
-    PG_PASS: ${env:PG_PASS}
-
-    PG_DATABASE: ${env:PG_DATABASE}
-
   architecture: arm64
   stage: ${opt:stage, 'prod'}
   region: ${opt:region, 'il-central-1'}
