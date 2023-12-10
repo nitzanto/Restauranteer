@@ -3,7 +3,7 @@ name: Deploy Lambda
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -42,7 +42,7 @@ jobs:
 
     - name: nest build
       run: yarn run build
-     
+
     - name: Deploy lambda function
       run: sls deploy
 
