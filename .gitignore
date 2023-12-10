@@ -36,4 +36,6 @@ lerna-debug.log*
 
 .serverless
 
+.env.prod
+
 .env
