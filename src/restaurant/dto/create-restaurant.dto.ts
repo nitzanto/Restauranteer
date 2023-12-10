@@ -12,9 +12,32 @@ import { Type } from 'class-transformer';
 export class CreateRestaurantDto {
   @IsString()
   @IsNotEmpty()
-  email: string;
+  name: string;
 
   @IsString()
   @IsNotEmpty()
-  password: string;
+  description: string;
+
+  @IsString()
+  @IsNotEmpty()
+  imgURL: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  rating: number;
+
+  @IsString()
+  @IsNotEmpty()
+  location: string;
+
+  @IsString()
+  @IsNotEmpty()
+  cuisine: string;
+
+  @IsArray()
+  @ArrayNotEmpty()
+  @ArrayUnique()
+  @ValidateNested({ each: true })
+  @Type(() => Date)
+  reservationDates: Date[];
 }
